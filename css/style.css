@@ -15,10 +15,11 @@
 }
 .card {
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 25px !important;
 }
 .card img {
   border-radius: 25px;
+  height: 235px;
 }
 .card-title {
   font-weight: 600 !important;
