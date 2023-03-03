@@ -12,14 +12,16 @@ const displayData = (data, limit, isSort) => {
   let allData;
   if (limit > 0) {
     allData = data.data.tools;
+    document.getElementById("seeMore").classList.add("d-none");
   } else {
     allData = data.data.tools.slice(0, 6);
+    document.getElementById("seeMore").classList.remove("d-none");
   }
   if (isSort === true) {
     allData.sort(function (a, b) {
       return new Date(a.published_in) - new Date(b.published_in);
     });
-    console.log(allData);
+    // console.log(allData);
   }
   document.getElementById("mySpinner").classList.add("d-none");
   document.getElementById("mySpinner1").classList.add("d-none");
@@ -93,7 +95,12 @@ const myModal = (id) => {
 const displayDataInModal = (obj) => {
   console.log(obj);
   // ----------------------------------------------modal left div js----------------------
-
+  const costDivCreate = (text) => {
+    const costChildDiv1 = document.createElement("div");
+    costChildDiv1.classList.add("cost");
+    costChildDiv1.innerHTML = text;
+    costParentDiv.appendChild(costChildDiv1);
+  };
   const leftParent = document.getElementById("leftDiv");
   leftParent.innerHTML = "";
   const leftChildDiv = document.createElement("div");
@@ -121,14 +128,21 @@ const displayDataInModal = (obj) => {
   //  -------------------------------------------cost div dynamic-----------------------------
   leftParent.appendChild(leftChildDiv);
   const costParentDiv = document.getElementById("costDiv");
-  obj.pricing.forEach((aPrice) => {
-    const costChildDiv = document.createElement("div");
-    costChildDiv.classList.add("cost");
-    costChildDiv.innerHTML = `${
-      aPrice.price ? aPrice.price : "Free of Cost"
-    } / ${aPrice.plan} `;
-    costParentDiv.appendChild(costChildDiv);
-  });
+  if (obj.pricing == null) {
+    costDivCreate("Free Of Cost/Basic");
+    costDivCreate("Free Of Cost/Pro");
+    costDivCreate("Free Of Cost/Enterprise");
+  } else {
+    obj.pricing.forEach((aPrice) => {
+      const costChildDiv = document.createElement("div");
+      costChildDiv.classList.add("cost");
+      costChildDiv.innerHTML = `${
+        aPrice.price ? aPrice.price : "Free of Cost/"
+      }  ${aPrice.plan} `;
+      costParentDiv.appendChild(costChildDiv);
+    });
+  }
+
   //  -------------------------------------------Features div dynamic-----------------------------
   const modalFeatures = document.getElementById("modalFeatures");
   modalFeatures.innerHTML = "";
@@ -148,7 +162,7 @@ const displayDataInModal = (obj) => {
   const modalIntegration = document.getElementById("modalIntegration");
   modalIntegration.innerHTML = "";
 
-  if (obj.integrations.length != 0) {
+  if (obj.integrations != null) {
     obj.integrations.forEach((aValue) => {
       const li1 = document.createElement("li");
       li1.innerText = aValue;
@@ -172,10 +186,14 @@ const displayDataInModal = (obj) => {
   alt="..."
 />
 <div class="card-body text-center">
-  <h5 class="card-title">${obj.input_output_examples[0].input}</h5>
+  <h5 class="card-title">${
+    obj.input_output_examples
+      ? obj.input_output_examples[0].input
+      : "Can you give any example?"
+  }</h5>
   <p class="card-text">
     ${
-      obj.input_output_examples[0].output
+      obj.input_output_examples
         ? obj.input_output_examples[0].output
         : "No! Not Yet! Take a break!!!"
     }
