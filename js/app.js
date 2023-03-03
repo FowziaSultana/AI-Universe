@@ -1,11 +1,12 @@
-const loadData = async (limit = 0) => {
+let showAllLimit;
+const loadData = async (limit = 0, isSort) => {
   const url = "https://openapi.programming-hero.com/api/ai/tools";
   const res = await fetch(url);
   const data = await res.json();
-  displayData(data, limit);
+  displayData(data, limit, isSort);
 };
 
-const displayData = (data, limit) => {
+const displayData = (data, limit, isSort) => {
   const parentDiv = document.getElementById("cardsContainer");
   parentDiv.innerHTML = "";
   let allData;
@@ -14,9 +15,15 @@ const displayData = (data, limit) => {
   } else {
     allData = data.data.tools.slice(0, 6);
   }
+  if (isSort === true) {
+    allData.sort(function (a, b) {
+      return new Date(a.published_in) - new Date(b.published_in);
+    });
+    console.log(allData);
+  }
   document.getElementById("mySpinner").classList.add("d-none");
   allData.forEach((element) => {
-    console.log(element);
+    //console.log(element);
 
     const child1 = document.createElement("div");
     child1.classList.add("col");
@@ -55,15 +62,18 @@ const displayData = (data, limit) => {
 
 document.getElementById("seeMore").addEventListener("click", function () {
   document.getElementById("mySpinner").classList.remove("d-none");
-  loadData(1);
+  showAllLimit = 1;
+  loadData(showAllLimit);
   // alert("jahgd");
 });
 
 document.getElementById("sort").addEventListener("click", function () {
-  document.getElementById("mySpinner").classList.remove("d-none");
-  loadData(1);
-  // alert("jahgd");
+  //document.getElementById("mySpinner").classList.remove("d-none");
+  if (showAllLimit > 0) {
+    loadData(showAllLimit, true);
+  } else {
+    loadData(0, true);
+  }
 });
-
 document.getElementById("mySpinner").classList.remove("d-none");
 loadData();
