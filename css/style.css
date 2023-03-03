@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap");
+:root {
+  /* font-family: 'Inter', sans-serif; */
+  font-family: "Work Sans", sans-serif;
+}
+.primary-btn {
+  margin-top: 20px;
+  width: 142px;
+  height: 50px;
+  background: #eb5757;
+  border-radius: 10px;
+  border-color: #eb5757;
+  color: #ffffff;
+  font-weight: 600;
+}
