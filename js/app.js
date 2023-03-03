@@ -1,14 +1,22 @@
-console.log("hello");
-const loadData = async () => {
+const loadData = async (limit = 0) => {
   const url = "https://openapi.programming-hero.com/api/ai/tools";
   const res = await fetch(url);
   const data = await res.json();
-  displayData(data);
+  displayData(data, limit);
 };
 
-const displayData = (data) => {
+const displayData = (data, limit) => {
   const parentDiv = document.getElementById("cardsContainer");
-  data.data.tools.forEach((element) => {
+  parentDiv.innerHTML = "";
+
+  let newData;
+  if (limit > 0) {
+    newData = data.data.tools;
+  } else {
+    newData = data.data.tools.slice(0, 6);
+  }
+  document.getElementById("mySpinner").classList.add("d-none");
+  newData.forEach((element) => {
     console.log(element);
 
     const child1 = document.createElement("div");
@@ -46,4 +54,11 @@ const displayData = (data) => {
   });
 };
 
+document.getElementById("seeMore").addEventListener("click", function () {
+  document.getElementById("mySpinner").classList.remove("d-none");
+  loadData(1);
+  // alert("jahgd");
+});
+
+document.getElementById("mySpinner").classList.remove("d-none");
 loadData();
