@@ -28,10 +28,9 @@
       aria-labelledby="detailsLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="detailsLabel">Modal title</h5>
             <button
               type="button"
               class="btn-close"
@@ -39,16 +38,60 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Understood</button>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row row-cols-1 row-cols-lg-2 g-4">
+                <div id="leftDiv" class="col">
+                  <div class="card h-100 p-3 p-md-4">
+                    <div class="card-body">
+                      <h4>
+                        ChatGPT is an AI-powered chatbot platform that uses
+                        OpenAI's GPT technology to simulate human conversation
+                      </h4>
+                      <div
+                        class="d-flex flex-column flex-md-row justify-content-evenly align-items-center gap-2"
+                      >
+                        <div class="cost">$10/month Basic</div>
+                        <div class="cost">$10/month Basic</div>
+                        <div class="cost">$10/month Basic</div>
+                      </div>
+                      <div class="row row-cols-1 row-cols-lg-2 mt-2 g-2 g-md-0">
+                        <div class="col">
+                          <h5>Features</h5>
+
+                          <li>Customizable responses</li>
+                          <li>Multilingual support</li>
+                          <li>integration</li>
+                        </div>
+                        <div class="col">
+                          <h5>Features</h5>
+
+                          <li>Customizable responses</li>
+                          <li>Multilingual support</li>
+                          <li>integration</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="rightDiv" class="col">
+                  <div class="card h-100 p-3 p-md-4">
+                    <img
+                      src="/img/no-Image.jpg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Hi, how are you doing today?</h5>
+                      <p class="card-text">
+                        I'm doing well, thank you for asking. How can I assist
+                        you today?No! Not Yet! Take a break!!!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -57,6 +100,15 @@
     <section class="container text-center mt-4">
       <h1>AI Universe Hub</h1>
       <button id="sort" class="primary-btn">Sort By Date</button>
+      <div id="mySpinner1" class="d-flex justify-content-center d-none">
+        <div
+          class="spinner-border text-info"
+          style="width: 3rem; height: 3rem"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </section>
 
     <!-- --------------------------- cards section -->

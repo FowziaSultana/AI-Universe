@@ -14,8 +14,7 @@
   font-weight: 600;
 }
 .card {
-  padding: 20px;
-  border-radius: 25px !important;
+  border-radius: 22px !important;
 }
 .card img {
   border-radius: 25px;
@@ -36,4 +35,21 @@
   border-radius: 50%;
   text-align: center;
   color: orange;
+}
+#leftDiv .card {
+  background: rgba(235, 87, 87, 0.05);
+  border: 1px solid #eb5757;
+}
+#rightDiv .card {
+  background: #ffffff;
+  border: 1px solid #e7e7e7;
+}
+.cost {
+  width: 120px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #e7e7e7;
+  background-color: #ffffff;
+  border-radius: 7px;
+  text-align: center;
 }
