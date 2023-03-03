@@ -29,3 +29,11 @@
   font-weight: 400 !important;
   color: #585858 !important;
 }
+.modalSpan {
+  height: 25px;
+  width: 25px;
+  background-color: #bbbbbb4f;
+  border-radius: 50%;
+  text-align: center;
+  color: orange;
+}

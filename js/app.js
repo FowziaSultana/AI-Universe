@@ -8,15 +8,14 @@ const loadData = async (limit = 0) => {
 const displayData = (data, limit) => {
   const parentDiv = document.getElementById("cardsContainer");
   parentDiv.innerHTML = "";
-
-  let newData;
+  let allData;
   if (limit > 0) {
-    newData = data.data.tools;
+    allData = data.data.tools;
   } else {
-    newData = data.data.tools.slice(0, 6);
+    allData = data.data.tools.slice(0, 6);
   }
   document.getElementById("mySpinner").classList.add("d-none");
-  newData.forEach((element) => {
+  allData.forEach((element) => {
     console.log(element);
 
     const child1 = document.createElement("div");
@@ -39,7 +38,7 @@ const displayData = (data, limit) => {
       <h5 class="card-title">${element.name}</h5>
       
       <div class="d-flex justify-content-between align-items-center"><small class="text-muted"><i class=" me-3 fa-sharp fa-regular fa-calendar"></i>${element.published_in}</small>
-        <span ><i  data-bs-toggle="modal"
+        <span class="modalSpan" ><i  data-bs-toggle="modal"
         data-bs-target="#details" class="fa-solid fa-arrow-right"></i></span>
       </div>
     </div>
@@ -55,6 +54,12 @@ const displayData = (data, limit) => {
 };
 
 document.getElementById("seeMore").addEventListener("click", function () {
+  document.getElementById("mySpinner").classList.remove("d-none");
+  loadData(1);
+  // alert("jahgd");
+});
+
+document.getElementById("sort").addEventListener("click", function () {
   document.getElementById("mySpinner").classList.remove("d-none");
   loadData(1);
   // alert("jahgd");
