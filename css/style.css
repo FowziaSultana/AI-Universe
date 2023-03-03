@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap");
 :root {
-  /* font-family: 'Inter', sans-serif; */
   font-family: "Work Sans", sans-serif;
 }
 .primary-btn {
@@ -46,10 +45,13 @@
 }
 .cost {
   width: 120px;
-  height: 70px;
+  height: 80px;
   padding: 10px;
   border: 1px solid #e7e7e7;
   background-color: #ffffff;
   border-radius: 7px;
   text-align: center;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
 }

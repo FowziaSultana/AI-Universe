@@ -92,10 +92,96 @@ const myModal = (id) => {
 };
 const displayDataInModal = (obj) => {
   console.log(obj);
-  let tempValues = Object.values(obj.features);
-  tempValues.forEach((aValue) => {
-    console.log(aValue.feature_name);
+  // ----------------------------------------------modal left div js----------------------
+
+  const leftParent = document.getElementById("leftDiv");
+  leftParent.innerHTML = "";
+  const leftChildDiv = document.createElement("div");
+  leftChildDiv.classList.add("card", "h-100", "p-3", "p-md-4");
+  leftChildDiv.innerHTML = `  <div class="card-body">
+  <h4>
+    ${obj.description}
+  </h4>
+  <div id="costDiv"
+    class="d-flex flex-column flex-md-row justify-content-evenly align-items-center gap-2 my-4"
+  >
+    
+  </div>
+  <div class="row row-cols-1 row-cols-lg-2 mt-2 g-2 g-md-0">
+    <div class="col">
+      <h5>Features</h5>
+      <div id="modalFeatures"></div>
+    </div>
+    <div class="col">
+      <h5>Integration</h5>
+      <div id="modalIntegration"></div>
+    </div>
+  </div>
+</div>`;
+  //  -------------------------------------------cost div dynamic-----------------------------
+  leftParent.appendChild(leftChildDiv);
+  const costParentDiv = document.getElementById("costDiv");
+  obj.pricing.forEach((aPrice) => {
+    const costChildDiv = document.createElement("div");
+    costChildDiv.classList.add("cost");
+    costChildDiv.innerHTML = `${
+      aPrice.price ? aPrice.price : "Free of Cost"
+    } / ${aPrice.plan} `;
+    costParentDiv.appendChild(costChildDiv);
   });
+  //  -------------------------------------------Features div dynamic-----------------------------
+  const modalFeatures = document.getElementById("modalFeatures");
+  modalFeatures.innerHTML = "";
+  let tempFeatureValues = Object.values(obj.features);
+  if (tempFeatureValues.length != 0) {
+    tempFeatureValues.forEach((aValue) => {
+      const li = document.createElement("li");
+      li.innerText = aValue.feature_name;
+      modalFeatures.appendChild(li);
+    });
+  } else {
+    const li = document.createElement("li");
+    li.innerText = "No Data Found";
+    modalFeatures.appendChild(li);
+  }
+  //  -------------------------------------------Integration div dynamic-----------------------------
+  const modalIntegration = document.getElementById("modalIntegration");
+  modalIntegration.innerHTML = "";
+
+  if (obj.integrations.length != 0) {
+    obj.integrations.forEach((aValue) => {
+      const li1 = document.createElement("li");
+      li1.innerText = aValue;
+      modalIntegration.appendChild(li1);
+    });
+  } else {
+    const li1 = document.createElement("li");
+    li1.innerText = "No Data Found";
+    modalIntegration.appendChild(li1);
+  }
+
+  // ----------------------------------------------modal right div js----------------------
+
+  const rightParent = document.getElementById("rightDiv");
+  rightParent.innerHTML = "";
+  const rightChild = document.createElement("div");
+  rightChild.classList.add("card", "h-100", "p-3", "p-md-4");
+  rightChild.innerHTML = `<img
+  src="${obj.image_link ? obj.image_link[0] : "/img/no-Image.jpg"} "
+  class="card-img-top"
+  alt="..."
+/>
+<div class="card-body text-center">
+  <h5 class="card-title">${obj.input_output_examples[0].input}</h5>
+  <p class="card-text">
+    ${
+      obj.input_output_examples[0].output
+        ? obj.input_output_examples[0].output
+        : "No! Not Yet! Take a break!!!"
+    }
+  </p>
+</div>`;
+  rightParent.appendChild(rightChild);
 };
 
 document.getElementById("mySpinner").classList.remove("d-none");
