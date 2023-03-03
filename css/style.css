@@ -13,3 +13,18 @@
   color: #ffffff;
   font-weight: 600;
 }
+.card {
+  padding: 20px;
+  border-radius: 25px;
+}
+.card img {
+  border-radius: 25px;
+}
+.card-title {
+  font-weight: 600 !important;
+  color: #111111 !important;
+}
+.card-text {
+  font-weight: 400 !important;
+  color: #585858 !important;
+}

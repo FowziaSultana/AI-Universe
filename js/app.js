@@ -5,4 +5,5 @@ const loadData = async () => {
   const data = await res.json();
   console.log(data);
 };
+
 loadData();
