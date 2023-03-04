@@ -175,7 +175,12 @@ const displayDataInModal = (obj) => {
   }
 
   // ----------------------------------------------modal right div js----------------------
-
+  let accuracyScore;
+  if (obj.accuracy.score != null) {
+    accuracyScore = obj.accuracy.score * 100 + "% accuracy";
+  } else {
+    accuracyScore = null;
+  }
   const rightParent = document.getElementById("rightDiv");
   rightParent.innerHTML = "";
   const rightChild = document.createElement("div");
@@ -185,6 +190,7 @@ const displayDataInModal = (obj) => {
   class="card-img-top"
   alt="..."
 />
+<div id="accuracy">${accuracyScore ? accuracyScore : null}</div>
 <div class="card-body text-center">
   <h5 class="card-title">${
     obj.input_output_examples
@@ -200,6 +206,13 @@ const displayDataInModal = (obj) => {
   </p>
 </div>`;
   rightParent.appendChild(rightChild);
+  let score = document.getElementById("accuracy").innerText;
+  if (score === "null") {
+    console.log("hey");
+    document.getElementById("accuracy").classList.add("d-none");
+  } else {
+    document.getElementById("accuracy").classList.remove("d-none");
+  }
 };
 
 document.getElementById("mySpinner").classList.remove("d-none");

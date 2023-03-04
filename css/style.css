@@ -55,3 +55,21 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
 }
+#accuracy {
+  width: 140px;
+  height: 32px;
+  background-color: #eb5757;
+  color: #e7e7e7;
+  border-radius: 3px;
+  text-align: center;
+  padding: 4px;
+  position: relative;
+  top: -40%;
+  left: 0px;
+  /* left: 70%; responsive */
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #accuracy {
+    top: -25%;
+  }
+}
