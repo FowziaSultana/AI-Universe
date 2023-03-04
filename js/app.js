@@ -192,7 +192,7 @@ const displayDataInModal = (obj) => {
   rightChild.classList.add("card", "h-100", "p-3", "p-md-4");
   rightChild.innerHTML = `<img
   src="${obj.image_link ? obj.image_link[0] : "/img/no-Image.jpg"} "
-  class="card-img-top modalCardImage"
+  class="card-img-top "
   alt="..."
 />
 <div id="accuracy">${accuracyScore ? accuracyScore : null}</div>
