@@ -220,5 +220,7 @@ const displayDataInModal = (obj) => {
   }
 };
 
+// ---------------------------------------------starting js----------------------
+
 document.getElementById("mySpinner").classList.remove("d-none");
 loadData();
