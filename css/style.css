@@ -55,8 +55,11 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
 }
+.modalCardImage {
+  border: 1px solid #e7e7e7;
+}
 #accuracy {
-  width: 140px;
+  width: 120px;
   height: 32px;
   background-color: #eb5757;
   color: #e7e7e7;

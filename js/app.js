@@ -31,7 +31,7 @@ const displayData = (data, limit, isSort) => {
     child1.innerHTML = `  <div class="card h-100 p-3 p-md-4">
     <img
       src="${element.image ? element.image : "../img/no-Image.jpg"}"
-      class="card-img-top"
+      class="card-img-top " 
       alt="No Image Found"
     />
     <div class="card-body">
@@ -70,12 +70,15 @@ const displayData = (data, limit, isSort) => {
     });
   });
 };
+// ---------------------------------------------see more btn js Started----------------------
 
 document.getElementById("seeMore").addEventListener("click", function () {
   document.getElementById("mySpinner").classList.remove("d-none");
   showAllLimit = 1;
   loadData(showAllLimit);
 });
+
+// ---------------------------------------------ShowByDate js Started----------------------
 
 document.getElementById("sort").addEventListener("click", function () {
   document.getElementById("mySpinner1").classList.remove("d-none");
@@ -86,14 +89,16 @@ document.getElementById("sort").addEventListener("click", function () {
   }
 });
 
+// ----------------------------------------------modal js Started----------------------
 const myModal = (id) => {
   let url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayDataInModal(data.data));
 };
+
 const displayDataInModal = (obj) => {
-  console.log(obj);
+  // console.log(obj);
   // ----------------------------------------------modal left div js----------------------
   const costDivCreate = (text) => {
     const costChildDiv1 = document.createElement("div");
@@ -187,7 +192,7 @@ const displayDataInModal = (obj) => {
   rightChild.classList.add("card", "h-100", "p-3", "p-md-4");
   rightChild.innerHTML = `<img
   src="${obj.image_link ? obj.image_link[0] : "/img/no-Image.jpg"} "
-  class="card-img-top"
+  class="card-img-top modalCardImage"
   alt="..."
 />
 <div id="accuracy">${accuracyScore ? accuracyScore : null}</div>
